@@ -21,7 +21,9 @@ L'objectif est de minimiser le **coût global de satisfaction** selon les choix 
 > combiné à un modèle de **flot à coût minimum** pour gérer les capacités multiples.
 
 ---
-
+![Results1](docs/img/results1.png)
+![Results2](docs/img/results2.png)
+---
 ## Échelle des pondérations
 
 | Intention | Poids conseillé | Interprétation |
