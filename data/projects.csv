@@ -1,0 +1,15 @@
+id,label,capacity
+P1,Data Cleaning,6
+P2,Recommender System,6
+P3,Image Classification,6
+P4,NLP Chatbot,6
+P5,Time Series Forecasting,6
+P6,Anomaly Detection,6
+P7,Reinforcement Learning,6
+P8,Optimization Engine,6
+P9,Web Analytics,6
+P10,Computer Vision,6
+P11,Graph Mining,6
+P12,AutoML Pipeline,6
+P13,Edge AI,6
+

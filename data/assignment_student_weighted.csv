@@ -1,0 +1,56 @@
+student,project_id,project_label,initial_choice
+Adam FOURNIER,P5,Time Series Forecasting,1:0.100
+Agathe DUPUIS,P10,Computer Vision,1:0.100
+Alice MARTIN,P1,Data Cleaning,2:0.133
+Amandine RENARD,P9,Web Analytics,1:0.100
+Ambre FABRE,P4,NLP Chatbot,1:0.100
+Anaïs LÉFÈVRE,P4,NLP Chatbot,1:0.100
+Arthur DAVID,P7,Reinforcement Learning,1:0.100
+Aya MARTINEZ,P10,Computer Vision,1:0.100
+Baptiste LEGRAND,P11,Graph Mining,1:0.100
+Camille SIMON,P5,Time Series Forecasting,2:0.133
+Chloé ROBERT,P6,Anomaly Detection,5:0.233
+Clara CARON,P13,Edge AI,1:0.100
+Clément MARCHAND,P13,Edge AI,1:0.100
+Emma DUBOIS,P2,Recommender System,1:0.100
+Enzo PAUL,P11,Graph Mining,1:0.100
+Ethan GIRARD,P6,Anomaly Detection,5:0.233
+Gabriel PETIT,P6,Anomaly Detection,5:0.233
+Hugo THOMAS,P4,NLP Chatbot,3:0.167
+Inès GARCIA,P7,Reinforcement Learning,1:0.100
+Jade COLIN,P11,Graph Mining,1:0.100
+Jeanne BERTRAND,P5,Time Series Forecasting,1:0.100
+Jules LAURENT,P7,Reinforcement Learning,1:0.100
+Justine LOPES,P8,Optimization Engine,1:0.100
+Lila GAUTIER,P12,AutoML Pipeline,1:0.100
+Lina MOREL,P1,Data Cleaning,1:0.100
+Louis DURAND,P3,Image Classification,1:0.100
+Lucas BERNARD,P1,Data Cleaning,2:0.133
+Lucie NOËL,P1,Data Cleaning,1:0.100
+Léa RICHARD,P3,Image Classification,1:0.100
+Manon LEROY,P3,Image Classification,1:0.100
+Marion DUMAS,P7,Reinforcement Learning,1:0.100
+Maxime MULLER,P4,NLP Chatbot,1:0.100
+Maël ANDRÉ,P4,NLP Chatbot,2:0.133
+Maëlle BOUCHET,P12,AutoML Pipeline,1:0.100
+Mila DUPONT,P6,Anomaly Detection,1:0.100
+Nathan MOREAU,P5,Time Series Forecasting,2:0.133
+Nino OLIVIER,P6,Anomaly Detection,1:0.100
+Noa NAVARRO,P9,Web Analytics,1:0.100
+Noé ROUX,P5,Time Series Forecasting,1:0.100
+Océane GUERIN,P13,Edge AI,1:0.100
+Oscar BOYER,P10,Computer Vision,1:0.100
+Pauline GAUTHIER,P6,Anomaly Detection,2:0.133
+Raphaël MERCIER,P6,Anomaly Detection,2:0.133
+Sacha FRANÇOIS,P9,Web Analytics,1:0.100
+Salomé COUSIN,P6,Anomaly Detection,1:0.100
+Sarah LEFEBVRE,P7,Reinforcement Learning,1:0.100
+Théo FONTANA,P12,AutoML Pipeline,1:0.100
+Timéo PIRES,P6,Anomaly Detection,2:0.133
+Tom MICHEL,P7,Reinforcement Learning,1:0.100
+Valentin CHARLES,P4,NLP Chatbot,2:0.133
+Victor LAMBERT,P8,Optimization Engine,2:0.133
+Yanis RENAUD,P8,Optimization Engine,1:0.100
+Zoé VINCENT,P5,Time Series Forecasting,1:0.100
+Élise BONNET,P8,Optimization Engine,1:0.100
+Émile REY,P8,Optimization Engine,2:0.133
