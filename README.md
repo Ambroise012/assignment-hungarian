@@ -22,9 +22,13 @@ L'objectif est de minimiser le **coût global de satisfaction** selon les choix 
 
 ---
 # Résultats:
+
 ![Results1](docs/img/results1.png)
+
 ![Results2](docs/img/results2.png)
-![Results2](docs/img/results3.png)
+
+![Results3](docs/img/results3.png)
+
 ---
 ## Échelle des pondérations
 
