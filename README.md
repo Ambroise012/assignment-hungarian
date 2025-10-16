@@ -16,22 +16,29 @@ Ce projet implémente un système complet d'**affectation optimale** entre étud
 - **Pondérée** : liste de projets avec poids (`P1:0.1;P2:0.3;P3:10`)
 
 L'objectif est de minimiser le **coût global de satisfaction** selon les choix individuels ou de groupe, en utilisant l'algorithme hongrois (Hungarian / Kuhn-Munkres Algorithm) combiné à un modèle de **flot à coût minimum** pour gérer les capacités multiples.
+
 --
 # Entrées:
 
 
 - Projets à affecter: [data/projects.csv](data/projects.csv)
-- Choix des étudiants (non-pondérés)[data/student-choices_unweighted.csv](data/student-choices_unweighted.csv)
-- Choix des étudiants (pondérés)[data/student-choices.csv](data/student-choices.csv)
+- Choix des étudiants non-pondérés: [data/student-choices_unweighted.csv](data/student-choices_unweighted.csv)
+- Choix des étudiants pondérés: [data/student-choices.csv](data/student-choices.csv)
 
 
 ---
 # Résultats:
 
-- [assignment_project_unweighted.csv](data/assignment_project_unweighted.csv)
-- [assignment_project_weighted.csv](data/assignment_project_weighted.csv)
-- [data/exports/weighted_assignment.png](data/exports/weighted_assignment.png)
-- [data/exports/unweighted_assignment.png](data/exports/unweighted_assignment.png)
+- Choix pondérés
+    - [data/assignment_student_unweighted.csv](data/assignment_student_unweighted.csv)
+    - [data/assignment_project_unweighted.csv](data/assignment_project_unweighted.csv)
+- Choix non-pondérés:
+    - [data/assignment_student_weighted.csv](data/assignment_student_weighted.csv)
+    - [data/assignment_project_weighted.csv](data/assignment_project_weighted.csv)
+
+- Visualisation des graphes:
+    - Choix pondérés: [data/exports/weighted_assignment.png](data/exports/weighted_assignment.png)
+    - Choix non-pondérés: [data/exports/unweighted_assignment.png](data/exports/unweighted_assignment.png)
 
 
 ![Results1](docs/img/results1.png)
