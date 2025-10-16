@@ -15,10 +15,7 @@ Ce projet implémente un système complet d'**affectation optimale** entre étud
 - **Ordonnée** : liste de projets par rang (`P1;P2;P3`)
 - **Pondérée** : liste de projets avec poids (`P1:0.1;P2:0.3;P3:10`)
 
-L'objectif est de minimiser le **coût global de satisfaction** selon les choix individuels ou de groupe, en utilisant :
-
-> **L'algorithme hongrois (Hungarian / Kuhn-Munkres Algorithm)**  
-> combiné à un modèle de **flot à coût minimum** pour gérer les capacités multiples.
+L'objectif est de minimiser le **coût global de satisfaction** selon les choix individuels ou de groupe, en utilisant l'algorithme hongrois (Hungarian / Kuhn-Munkres Algorithm) combiné à un modèle de **flot à coût minimum** pour gérer les capacités multiples.
 
 ---
 # Résultats:
@@ -29,82 +26,68 @@ L'objectif est de minimiser le **coût global de satisfaction** selon les choix 
 
 ![Results3](docs/img/results3.png)
 ---
-Fonctionnement
+# Fonctionnement
 
-# Algorithme de couplage hongrois (flot à coût minimal) – Explication et exemple 3×3
+## Algorithme de couplage hongrois (flot à coût minimal) – Explication et exemple 3×3
 
-Ce programme implémente une **affectation optimale** entre un ensemble d’étudiants et un ensemble de projets, 
-en cherchant à minimiser un **coût global** associé à la qualité des correspondances entre les deux groupes.  
-Il repose sur un **modèle de flot à coût minimal**, équivalent à l’**algorithme hongrois** lorsque chaque étudiant 
-doit être affecté à un projet unique de capacité $1$.
-
----
-
-## 1. Principe général
-
-On dispose de deux fichiers d’entrée :
-
-- **`projects.csv`** : liste des projets, avec :
-  - `id` : identifiant unique (ex. `A`, `B`, `C`) ;
-  - `label` : libellé (facultatif) ;
-  - `capacity` : nombre maximal d’étudiants assignables (défaut = 1).
-
-- **`student-choices.csv`** : liste des étudiants, avec :
-  - `student` : nom de l’étudiant (ex. `S1`, `S2`, …) ;
-  - `prefs` : préférences, soit **ordonnées** (`A;B;C`), soit **pondérées** (`A:0;B:1.5;C:3`) ;
-  - `weight` : poids (défaut = 1, utile pour des groupes) ;
-  - `names` : noms explicites pour chaque copie (optionnel).
-
-Deux modes sont possibles :
-
-1. **Ordonné** → les projets sont classés par ordre de préférence.  
-   Le coût associé au rang $r$ est donné par :
-   $$
-   c_r = r - 1
-   $$
-   Exemple : 1er vœu $=0$, 2e vœu $=1$, 3e vœu $=2$.
-
-2. **Pondéré** → chaque étudiant indique directement un **coût** numérique (plus petit = meilleur).  
-   Exemple : `A:0;B:1;C:3`.
-
-Tout projet non cité reçoit un **coût de pénalité** élevé (par défaut $10$) pour éviter des affectations non souhaitées.
+Ce programme réalise une **affectation optimale** d’étudiants vers des projets en minimisant un **coût global**.  
+Il modélise le problème comme un **flot à coût minimal** sur un graphe orienté.  
+Dans le cas 1–à–1 (chaque projet a une capacité de 1), on retrouve l’algorithme dit “hongrois”.
 
 ---
 
-## 2. Modélisation mathématique
+### 1) Principe général
 
-On construit un **graphe orienté** :
+Deux fichiers d’entrée :
 
-- un **nœud source** $s$ ;
-- un **nœud pour chaque étudiant** $e_i$ ;
-- un **nœud pour chaque projet** $p_j$ ;
-- un **nœud puits** $t$.
+- **projects.csv** : colonnes `id`, `label` (optionnel), `capacity` (défaut 1).  
+- **student-choices.csv** : colonnes `student`, `prefs`, `weight` (défaut 1), `names` (optionnel).
 
-Les arcs sont définis comme suit :
+#### Modes de préférences
 
-- $s \to e_i$ avec capacité $1$ et coût $0$ ;
-- $e_i \to p_j$ avec capacité $1$ et coût $c_{ij}$ (selon les préférences) ;
-- $p_j \to t$ avec capacité = capacité du projet et coût $0$.
+- **Ordonné** : `prefs` comme `A;B;C`.  
+  Coût par rang : 1er vœu = 0, 2e vœu = 1, 3e vœu = 2, etc.
+- **Pondéré** : `prefs` comme `A:0;B:1.5;C:3`.  
+  Les nombres fournis sont les coûts (plus petit = mieux).  
 
-On cherche le **flot de coût minimal** qui envoie tout le flot des étudiants vers les projets :
-
-$$
-\min \sum_{i,j} c_{ij} \, x_{ij}
-$$
-
-sous les contraintes :
-- chaque étudiant est affecté à **au plus un** projet ;
-- la somme des flots vers chaque projet ne dépasse pas sa **capacité** ;
-- les flots $x_{ij}$ sont entiers (0 ou 1 dans notre cas).
+Tout projet non cité reçoit une **pénalité** (ex. 10) pour éviter les affectations “hors-liste”.  
+Si la capacité totale est insuffisante, un projet virtuel `__NA__` est ajouté pour absorber les non-affectés.
 
 ---
 
-## 3. Application numérique : 3 étudiants × 3 projets
+### 2) Modélisation réseau
 
-Nous avons trois étudiants : $S_1$, $S_2$, $S_3$  
-et trois projets : $A$, $B$, $C$ (chacun de capacité $1$).
+On construit un graphe avec :
 
-### Préférences ordonnées
+- un nœud source `s`,  
+- un nœud étudiant par entrée `e_i`,  
+- un nœud projet par projet `p_j`,  
+- un nœud puits `t`.
+
+#### Arcs
+
+- `s -> e_i` : capacité 1, coût 0  
+- `e_i -> p_j` : capacité 1, coût c_ij (dépend des préférences)  
+- `p_j -> t` : capacité = capacité du projet, coût 0  
+
+Objectif : **minimiser** la somme des coûts des arcs utilisés, tout en respectant les capacités.  
+La résolution utilise `networkx.min_cost_flow`.
+
+Sorties :
+- par **étudiant** : projet attribué + rang/poids initial ;
+- par **projet** : effectif et liste des étudiants ;
+- **statistiques** : nombre affectés, non-affectés, médiane de rang, taux de 1er vœu, taux top-3.
+
+---
+
+### 3) Application numérique détaillée : 3 étudiants × 3 projets
+
+- Étudiants : `S1`, `S2`, `S3`  
+- Projets : `A`, `B`, `C`  
+- Capacités des projets : `A=1`, `B=1`, `C=1`  
+- Mode **ordonné** (coût par rang : 0, 1, 2)
+
+#### Préférences
 
 | Étudiant | 1er vœu | 2e vœu | 3e vœu |
 |:--:|:--:|:--:|:--:|
@@ -112,7 +95,7 @@ et trois projets : $A$, $B$, $C$ (chacun de capacité $1$).
 | S2 | B | C | A |
 | S3 | B | A | C |
 
-Les coûts de rang sont donc :
+#### Matrice des coûts c_ij (0=meilleur)
 
 |     | A | B | C |
 |:---:|:---:|:---:|:---:|
@@ -120,72 +103,50 @@ Les coûts de rang sont donc :
 | S2  | 2 | 0 | 1 |
 | S3  | 1 | 0 | 2 |
 
----
+#### Graphe d’arcs
 
-### Construction du graphe
+- `s -> S1` (cap=1, cost=0), `s -> S2` (cap=1, cost=0), `s -> S3` (cap=1, cost=0)
+- `S1 -> A` (cap=1, cost=0), `S1 -> B` (cap=1, cost=1), `S1 -> C` (cap=1, cost=2)
+- `S2 -> A` (cap=1, cost=2), `S2 -> B` (cap=1, cost=0), `S2 -> C` (cap=1, cost=1)
+- `S3 -> A` (cap=1, cost=1), `S3 -> B` (cap=1, cost=0), `S3 -> C` (cap=1, cost=2)
+- `A -> t` (cap=1, cost=0), `B -> t` (cap=1, cost=0), `C -> t` (cap=1, cost=0)
 
-- Arcs **étudiant → projet** avec ces coûts ;
-- Arcs **projet → puits** de capacité $1$ ;
-- Arcs **source → étudiant** de capacité $1$.
-
-Le flot total à envoyer vaut :
-$$
-F = 3
-$$
-
-puisqu’il y a trois étudiants à affecter.
+Le flot total à envoyer vaut 3 (les 3 étudiants).
 
 ---
 
-### Calcul des affectations possibles
+#### Affectations possibles et coût total
 
-Nous devons affecter chaque étudiant à un projet distinct.  
-Voici quelques combinaisons avec leurs coûts totaux :
+| Affectation | Coût total |
+|:--|:--:|
+| (S1→A, S2→B, S3→C) | 0 + 0 + 2 = **2** |
+| (S1→A, S2→C, S3→B) | 0 + 1 + 0 = **1** ✅ |
+| (S1→B, S2→C, S3→A) | 1 + 1 + 1 = **3** |
+| (S1→C, S2→A, S3→B) | 2 + 2 + 0 = **4** |
 
-1. $(S_1 \to A,\, S_2 \to B,\, S_3 \to C)$  
-   $0 + 0 + 2 = 2$
+**Affectation optimale :**
+- `S1 -> A` (rang 1, coût 0)
+- `S2 -> C` (rang 2, coût 1)
+- `S3 -> B` (rang 1, coût 0)
 
-2. $(S_1 \to A,\, S_2 \to C,\, S_3 \to B)$  
-   $0 + 1 + 0 = 1$ ✅ (meilleur)
-
-3. $(S_1 \to B,\, S_2 \to C,\, S_3 \to A)$  
-   $1 + 1 + 1 = 3$
-
-4. $(S_1 \to C,\, S_2 \to A,\, S_3 \to B)$  
-   $2 + 2 + 0 = 4$
-
-Le **coût minimal total** est donc :
-$$
-C_{\min} = 1
-$$
+**Coût total minimal** : **1**
 
 ---
 
-### 🔧 Résultat optimal
+#### Indicateurs de satisfaction
 
-L’affectation optimale est :
-
-| Étudiant | Projet attribué | Rang | Coût |
-|:--:|:--:|:--:|:--:|
-| S1 | A | 1 | 0 |
-| S2 | C | 2 | 1 |
-| S3 | B | 1 | 0 |
-
----
-
-### 📈 Indicateurs de satisfaction
-
-- Nombre d’étudiants affectés : $3 / 3 = 100\%$  
-- Nombre de non-affectés : $0$  
-- Rang médian : $\tilde{r} = 1$  
-- Taux de 1er vœu : $p_{top1} = \frac{2}{3} \approx 66{,}7\%$  
-- Taux top-3 : $p_{top3} = 1.0 = 100\%$  
+- Étudiants affectés : 3 / 3 = **100 %**  
+- Non-affectés : **0**  
+- Rangs obtenus : (1, 2, 1)  
+- Médiane du rang : **1**  
+- Taux de 1er vœu : 2 / 3 ≈ **66,7 %**  
+- Taux top-3 : **100 %**
 
 ---
 
-## 🧮 4. Variante pondérée
+### 4) Variante pondérée
 
-Si les préférences sont exprimées en **coûts explicites** (mode pondéré) :
+Supposons des coûts explicites (plus petit = mieux) :
 
 | Étudiant | A | B | C |
 |:--:|:--:|:--:|:--:|
@@ -193,8 +154,27 @@ Si les préférences sont exprimées en **coûts explicites** (mode pondéré) :
 | S2 | 3 | 0 | 1 |
 | S3 | 2 | 0 | 3 |
 
-Les arcs portent désormais ces coûts exacts (et une pénalité $10$ pour tout projet absent).  
-Le problème reste identique : minimiser la
+On utilise ces coûts sur les arcs `e_i -> p_j` (pénalité 10 si un projet n’est pas noté).  
+La solution reste la même, car l’ordre des préférences est identique :
+
+- `S1 -> A`  
+- `S2 -> C`  
+- `S3 -> B`  
+- Coût total minimal = **1**
+
+---
+
+### 5) Notes pratiques
+
+- La **pénalité** (ex. 10) empêche les affectations hors-liste tant qu’une option listée reste disponible.  
+- Le projet virtuel `__NA__` n’apparaît que si la **capacité totale** est inférieure au **nombre d’étudiants**.  
+- Le programme exporte les résultats en CSV, GraphML, GEXF, JSON, et peut aussi générer une **visualisation bipartite** 
+  (étudiants à gauche, projets à droite, épaisseur des arcs proportionnelle au flux).
+
+---
+
+*Cette version Markdown est compatible avec GitLab et Jupyter, sans LaTeX.*
+
 
 ---
 ## Échelle des pondérations
