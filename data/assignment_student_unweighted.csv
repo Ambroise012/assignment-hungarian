@@ -1,63 +1,67 @@
 student,project_id,project_label,initial_choice
-Aaron HUMBERT,P1,Data Cleaning,1
-Adam FOURNIER,P5,Time Series Forecasting,1
-Agathe DUPUIS,P10,Computer Vision,1
-Alice MARTIN,P1,Data Cleaning,2
-Amandine RENARD,P9,Web Analytics,1
-Ambre FABRE,P4,NLP Chatbot,1
-Anaïs LÉFÈVRE,P4,NLP Chatbot,1
-Antoine PERROT,P2,Recommender System,1
-Arthur DAVID,P7,Reinforcement Learning,1
-Aya MARTINEZ,P10,Computer Vision,1
-Baptiste LEGRAND,P11,Graph Mining,1
-Camille SIMON,P5,Time Series Forecasting,2
-Chloé ROBERT,P4,NLP Chatbot,3
-Clara CARON,P13,Edge AI,1
-Clément MARCHAND,P13,Edge AI,1
-Eliott CHARPENTIER,P1,Data Cleaning,1
-Emma DUBOIS,P2,Recommender System,1
-Enzo PAUL,P11,Graph Mining,1
-Ethan GIRARD,P2,Recommender System,1
-Gabriel PETIT,P4,NLP Chatbot,3
-Hugo THOMAS,P2,Recommender System,1
-Inès GARCIA,P7,Reinforcement Learning,1
-Iris BLANCHARD,P3,Image Classification,1
-Jade COLIN,P11,Graph Mining,1
-Jeanne BERTRAND,P5,Time Series Forecasting,1
-Jules LAURENT,P7,Reinforcement Learning,1
-Justine LOPES,P8,Optimization Engine,1
-Lila GAUTIER,P12,AutoML Pipeline,1
-Lina MOREL,P1,Data Cleaning,1
-Louis DURAND,P3,Image Classification,1
-Lucas BERNARD,P1,Data Cleaning,2
-Lucie NOËL,P1,Data Cleaning,1
-Léa RICHARD,P3,Image Classification,1
-Manon LEROY,P3,Image Classification,1
-Marion DUMAS,P8,Optimization Engine,2
-Marius MATHIEU,P2,Recommender System,1
-Maxime MULLER,P4,NLP Chatbot,1
-Maël ANDRÉ,P3,Image Classification,1
-Maëlle BOUCHET,P12,AutoML Pipeline,1
-Mila DUPONT,P6,Anomaly Detection,1
-Nathan MOREAU,P5,Time Series Forecasting,2
-Nina BARBIER,P2,Recommender System,1
-Nino OLIVIER,P6,Anomaly Detection,1
-Noa NAVARRO,P9,Web Analytics,1
-Noé ROUX,P5,Time Series Forecasting,1
-Océane GUERIN,P13,Edge AI,1
-Oscar BOYER,P10,Computer Vision,1
-Pauline GAUTHIER,P6,Anomaly Detection,2
-Raphaël MERCIER,P6,Anomaly Detection,2
-Romane GONZALEZ,P4,NLP Chatbot,2
-Sacha FRANÇOIS,P9,Web Analytics,1
-Salomé COUSIN,P6,Anomaly Detection,1
-Sarah LEFEBVRE,P7,Reinforcement Learning,1
-Théo FONTANA,P12,AutoML Pipeline,1
-Timéo PIRES,P6,Anomaly Detection,2
-Tom MICHEL,P7,Reinforcement Learning,1
-Valentin CHARLES,P3,Image Classification,1
-Victor LAMBERT,P8,Optimization Engine,2
-Yanis RENAUD,P8,Optimization Engine,1
-Zoé VINCENT,P5,Time Series Forecasting,1
-Élise BONNET,P8,Optimization Engine,1
-Émile REY,P7,Reinforcement Learning,1
+Ahmed FAKHFAKH,P2,Sai Axilab,3
+Alexandre DONNAT,P1,Nav4rail sncf,2
+Ambroise LAROYE,P10,Air Liquide,1
+Amir KASHANI,P14,Rakuten,2
+Andranick HAYRAPETYAN,P6,Covea juridique,3
+Andrew MAHO,P6,Covea juridique,2
+Anne FAURY,P6,Covea juridique,2
+Antoine DALLE,P8,Renault defaut visible,3
+Antoine DURAND,P7,Idemia vidéo surveillance,2
+Antoine LE FEVRE,P2,Sai Axilab,3
+Benjamin LEPOURTOIS,P12,Airbus image sattelitaire,1
+Bryan LY,P7,Idemia vidéo surveillance,3
+Chengbo ZHANG,P13,Engie,1
+Constance NGUYEN,P12,Airbus image sattelitaire,2
+Cora BOUVIER,P1,Nav4rail sncf,2
+Corentin MERGNY,P3,Safran,2
+Cyprien CHARLATÉ,P11,Airbus osint,1
+Eric LECONTE,P7,Idemia vidéo surveillance,3
+Evariste PARMENTIER,P3,Safran,1
+François-Xavier BONNEFONT,P11,Airbus osint,1
+Grégoire PETIT,P13,Engie,1
+GuyRostan DJOUNANG NANA,P3,Safran,1
+Hugo FANCHINI,P12,Airbus image sattelitaire,1
+Héloïse LORDEZ,P10,Air Liquide,1
+Jan WILLIAM,P10,Air Liquide,1
+Julien GIMENEZ,P8,Renault defaut visible,4
+Julien LAFRANCE,P2,Sai Axilab,1
+Julien NIOL,P6,Covea juridique,1
+Kamal BELMAJDOUB,P4,L'Oreal,1
+Khalil OUNIS,P9,Renaulf prevision marché,3
+Khalil REGAIEG,P2,Sai Axilab,1
+LINA RHIATI HAZIME,P1,Nav4rail sncf,1
+LeHoang NGUYEN,P7,Idemia vidéo surveillance,1
+Leo IVARS,P14,Rakuten,2
+LeonnelRomuald SOP,P13,Engie,1
+Lokeshwaran VENGADABADY,P8,Renault defaut visible,4
+Lounis HAMROUN,P8,Renault defaut visible,2
+Lucas GORREC,P3,Safran,2
+Mehdi AIT HAMMA,P14,Rakuten,2
+Mohamed AMAR,P5,Axians,1
+Mohamed HORACHE,P13,Engie,1
+MohamedAli FENICHE,P2,Sai Axilab,1
+Mohammed ELAMINE,P4,L'Oreal,2
+Mouhamedfadel SAMB,P12,Airbus image sattelitaire,1
+Mourad LATOUNDJI,P1,Nav4rail sncf,1
+Nathan BOUCNEAU,P3,Safran,2
+OMARDJAMA ABDILLAHI,P5,Axians,1
+Omar FEKIH HASSEN,P9,Renaulf prevision marché,1
+Oscar DE LA CRUZ,P12,Airbus image sattelitaire,1
+Osman BAGCI,P13,Engie,1
+Oussama BELHAJ RHOUMA,P4,L'Oreal,1
+Paul CINTRA,P7,Idemia vidéo surveillance,3
+Reda ELWARADI,P4,L'Oreal,1
+Rémi HAMON,P6,Covea juridique,2
+Sara EL MOUNTASSER,P4,L'Oreal,2
+TahianaHajanirina ANDRIAMBAHOAKA,P5,Axians,2
+Téo BLAISE KAPLANSKI,P10,Air Liquide,1
+Victor POUSSAIN,P8,Renault defaut visible,4
+William ROOSE,P11,Airbus osint,1
+Yassine MERNISSI,P5,Axians,1
+Yimou ZHANG,P11,Airbus osint,1
+Younes BOUTROUFT,P10,Air Liquide,1
+matthieu PEREIRA,P11,Airbus osint,1
+mohamed KABBAJ,P5,Axians,1
+stephane HORDOIR,P1,Nav4rail sncf,1
+zaher HAMADEH,P9,Renaulf prevision marché,6

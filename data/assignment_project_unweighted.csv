@@ -1,14 +1,15 @@
 project_label,project_id,effectif,students
-Data Cleaning,P1,6,Aaron HUMBERT;Alice MARTIN;Eliott CHARPENTIER;Lina MOREL;Lucas BERNARD;Lucie NOËL
-Recommender System,P2,6,Antoine PERROT;Emma DUBOIS;Ethan GIRARD;Hugo THOMAS;Marius MATHIEU;Nina BARBIER
-Image Classification,P3,6,Iris BLANCHARD;Louis DURAND;Léa RICHARD;Manon LEROY;Maël ANDRÉ;Valentin CHARLES
-NLP Chatbot,P4,6,Ambre FABRE;Anaïs LÉFÈVRE;Chloé ROBERT;Gabriel PETIT;Maxime MULLER;Romane GONZALEZ
-Time Series Forecasting,P5,6,Adam FOURNIER;Camille SIMON;Jeanne BERTRAND;Nathan MOREAU;Noé ROUX;Zoé VINCENT
-Anomaly Detection,P6,6,Mila DUPONT;Nino OLIVIER;Pauline GAUTHIER;Raphaël MERCIER;Salomé COUSIN;Timéo PIRES
-Reinforcement Learning,P7,6,Arthur DAVID;Inès GARCIA;Jules LAURENT;Sarah LEFEBVRE;Tom MICHEL;Émile REY
-Optimization Engine,P8,5,Justine LOPES;Marion DUMAS;Victor LAMBERT;Yanis RENAUD;Élise BONNET
-Web Analytics,P9,3,Amandine RENARD;Noa NAVARRO;Sacha FRANÇOIS
-Computer Vision,P10,3,Agathe DUPUIS;Aya MARTINEZ;Oscar BOYER
-Graph Mining,P11,3,Baptiste LEGRAND;Enzo PAUL;Jade COLIN
-AutoML Pipeline,P12,3,Lila GAUTIER;Maëlle BOUCHET;Théo FONTANA
-Edge AI,P13,3,Clara CARON;Clément MARCHAND;Océane GUERIN
+Nav4rail sncf,P1,5,Alexandre DONNAT;Cora BOUVIER;LINA RHIATI HAZIME;Mourad LATOUNDJI;stephane HORDOIR
+Sai Axilab,P2,5,Ahmed FAKHFAKH;Antoine LE FEVRE;Julien LAFRANCE;Khalil REGAIEG;MohamedAli FENICHE
+Safran,P3,5,Corentin MERGNY;Evariste PARMENTIER;GuyRostan DJOUNANG NANA;Lucas GORREC;Nathan BOUCNEAU
+L'Oreal,P4,5,Kamal BELMAJDOUB;Mohammed ELAMINE;Oussama BELHAJ RHOUMA;Reda ELWARADI;Sara EL MOUNTASSER
+Axians,P5,5,Mohamed AMAR;OMARDJAMA ABDILLAHI;TahianaHajanirina ANDRIAMBAHOAKA;Yassine MERNISSI;mohamed KABBAJ
+Covea juridique,P6,5,Andranick HAYRAPETYAN;Andrew MAHO;Anne FAURY;Julien NIOL;Rémi HAMON
+Idemia vidéo surveillance,P7,5,Antoine DURAND;Bryan LY;Eric LECONTE;LeHoang NGUYEN;Paul CINTRA
+Renault defaut visible,P8,5,Antoine DALLE;Julien GIMENEZ;Lokeshwaran VENGADABADY;Lounis HAMROUN;Victor POUSSAIN
+Renaulf prevision marché,P9,3,Khalil OUNIS;Omar FEKIH HASSEN;zaher HAMADEH
+Air Liquide,P10,5,Ambroise LAROYE;Héloïse LORDEZ;Jan WILLIAM;Téo BLAISE KAPLANSKI;Younes BOUTROUFT
+Airbus osint,P11,5,Cyprien CHARLATÉ;François-Xavier BONNEFONT;William ROOSE;Yimou ZHANG;matthieu PEREIRA
+Airbus image sattelitaire,P12,5,Benjamin LEPOURTOIS;Constance NGUYEN;Hugo FANCHINI;Mouhamedfadel SAMB;Oscar DE LA CRUZ
+Engie,P13,5,Chengbo ZHANG;Grégoire PETIT;LeonnelRomuald SOP;Mohamed HORACHE;Osman BAGCI
+Rakuten,P14,3,Amir KASHANI;Leo IVARS;Mehdi AIT HAMMA

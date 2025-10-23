@@ -1,14 +1,15 @@
 project_label,project_id,effectif,students
-Data Cleaning,P1,4,Alice MARTIN;Lina MOREL;Lucas BERNARD;Lucie NOËL
-Recommender System,P2,1,Emma DUBOIS
-Image Classification,P3,3,Louis DURAND;Léa RICHARD;Manon LEROY
-NLP Chatbot,P4,6,Ambre FABRE;Anaïs LÉFÈVRE;Hugo THOMAS;Maxime MULLER;Maël ANDRÉ;Valentin CHARLES
-Time Series Forecasting,P5,6,Adam FOURNIER;Camille SIMON;Jeanne BERTRAND;Nathan MOREAU;Noé ROUX;Zoé VINCENT
-Anomaly Detection,P6,9,Chloé ROBERT;Ethan GIRARD;Gabriel PETIT;Mila DUPONT;Nino OLIVIER;Pauline GAUTHIER;Raphaël MERCIER;Salomé COUSIN;Timéo PIRES
-Reinforcement Learning,P7,6,Arthur DAVID;Inès GARCIA;Jules LAURENT;Marion DUMAS;Sarah LEFEBVRE;Tom MICHEL
-Optimization Engine,P8,5,Justine LOPES;Victor LAMBERT;Yanis RENAUD;Élise BONNET;Émile REY
-Web Analytics,P9,3,Amandine RENARD;Noa NAVARRO;Sacha FRANÇOIS
-Computer Vision,P10,3,Agathe DUPUIS;Aya MARTINEZ;Oscar BOYER
-Graph Mining,P11,3,Baptiste LEGRAND;Enzo PAUL;Jade COLIN
-AutoML Pipeline,P12,3,Lila GAUTIER;Maëlle BOUCHET;Théo FONTANA
-Edge AI,P13,3,Clara CARON;Clément MARCHAND;Océane GUERIN
+Nav4rail sncf,P1,3,Anne FAURY;LINA RHIATI HAZIME;stephane HORDOIR
+Sai Axilab,P2,6,Ahmed FAKHFAKH;Julien LAFRANCE;Kamal BELMAJDOUB;Khalil REGAIEG;MohamedAli FENICHE;TahianaHajanirina ANDRIAMBAHOAKA
+Safran,P3,5,Cora BOUVIER;Cyprien CHARLATÉ;Evariste PARMENTIER;GuyRostan DJOUNANG NANA;Nathan BOUCNEAU
+L'Oreal,P4,5,Antoine LE FEVRE;Khalil OUNIS;Reda ELWARADI;William ROOSE;zaher HAMADEH
+Axians,P5,3,AhmedFakhfakh#?;Mouhamedfadel SAMB;Oussama BELHAJ RHOUMA
+Covea juridique,P6,4,Andranick HAYRAPETYAN;Andrew MAHO;Julien NIOL;mohamed KABBAJ
+Idemia vidéo surveillance,P7,3,Constance NGUYEN;EvaristeParmentier#?;LeHoang NGUYEN
+Renault defaut visible,P8,4,Grégoire PETIT;Julien GIMENEZ;Lokeshwaran VENGADABADY;Lounis HAMROUN
+Renaulf prevision marché,P9,4,Leo IVARS;Omar FEKIH HASSEN;Sara EL MOUNTASSER;Téo BLAISE KAPLANSKI
+Air Liquide,P10,6,Alexandre DONNAT;Ambroise LAROYE;Héloïse LORDEZ;Jan WILLIAM;OmarFekihHassen#?;Younes BOUTROUFT
+Airbus osint,P11,4,Antoine DURAND;Corentin MERGNY;Lucas GORREC;Mohammed ELAMINE
+Airbus image sattelitaire,P12,6,Benjamin LEPOURTOIS;Eric LECONTE;François-Xavier BONNEFONT;Hugo FANCHINI;Paul CINTRA;Victor POUSSAIN
+Engie,P13,6,LeonnelRomuald SOP;Mohamed HORACHE;Mourad LATOUNDJI;OMARDJAMA ABDILLAHI;Osman BAGCI;Yassine MERNISSI
+Rakuten,P14,3,Amir KASHANI;Mehdi AIT HAMMA;YassineMernissi#?

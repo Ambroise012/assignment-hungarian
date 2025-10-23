@@ -1,15 +1,16 @@
 id,label,capacity
-P1,Data Cleaning,6
-P2,Recommender System,6
-P3,Image Classification,6
-P4,NLP Chatbot,6
-P5,Time Series Forecasting,6
-P6,Anomaly Detection,6
-P7,Reinforcement Learning,6
-P8,Optimization Engine,6
-P9,Web Analytics,6
-P10,Computer Vision,6
-P11,Graph Mining,6
-P12,AutoML Pipeline,6
-P13,Edge AI,6
+P1,Nav4rail sncf,5
+P2,Sai Axilab,5
+P3,Safran,5
+P4,L'Oreal,5
+P5,Axians,5
+P6,Covea juridique,5
+P7,Idemia vidéo surveillance,5
+P8,Renault defaut visible,5
+P9,Renaulf prevision marché,5
+P10,Air Liquide,5
+P11,Airbus osint,5
+P12,Airbus image sattelitaire,5
+P13,Engie,5
+P14,Rakuten,5
 

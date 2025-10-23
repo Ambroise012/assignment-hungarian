@@ -1,45 +1,44 @@
-# FR Projet d’affectation optimale — *Méthode Hongroise (Hungarian Algorithm)*
+# EN Optimal Assignment Project — *Hungarian Algorithm (Kuhn–Munkres Method)*
 
-**Auteur : Julien Gimenez**  
-**Date : 2025**  
-**Langage : Python (pandas, networkx)**  
+**Author: Julien Gimenez**  
+**Date: 2025**  
+**Language: Python (pandas, networkx)**  
 
 ![Logo Student-Project Assignment Using the Kuhn–Munkres - Hungarian - Algorithm](docs/img/hugarian-method.png)
 
 ---
 
-## Objectif
+## Objective
 
-Ce projet implémente un système complet d'**affectation optimale** entre étudiants et projets à partir de préférences exprimées sous forme :
+This project implements a complete system for **optimal assignment** between students and projects based on preferences expressed in the following formats:
 
-- **Ordonnée** : liste de projets par rang (`P1;P2;P3`)
-- **Pondérée** : liste de projets avec poids (`P1:0.1;P2:0.3;P3:10`)
+- **Ordered**: list of projects by rank (`P1;P2;P3`)
+- **Weighted**: list of projects with weights (`P1:0.1;P2:0.3;P3:10`)
 
-L'objectif est de minimiser le **coût global de satisfaction** selon les choix individuels ou de groupe, en utilisant l'algorithme hongrois (Hungarian / Kuhn-Munkres Algorithm) combiné à un modèle de **flot à coût minimum** pour gérer les capacités multiples.
-
---
-# Entrées:
-
-
-- Projets à affecter: [data/projects.csv](data/projects.csv)
-- Choix des étudiants non-pondérés: [data/student-choices_unweighted.csv](data/student-choices_unweighted.csv)
-- Choix des étudiants pondérés: [data/student-choices.csv](data/student-choices.csv)
-
+The goal is to minimize the **overall satisfaction cost** according to individual or group preferences, using the **Hungarian algorithm** (Kuhn–Munkres Algorithm) combined with a **minimum-cost flow model** to handle multiple capacities.
 
 ---
-# Résultats:
 
-- Choix pondérés
+# Inputs:
+
+- Projects to assign: [data/projects.csv](data/projects.csv)
+- Unweighted student choices: [data/student-choices_unweighted.csv](data/student-choices_unweighted.csv)
+- Weighted student choices: [data/student-choices.csv](data/student-choices.csv)
+
+---
+
+# Results:
+
+- Weighted choices:
     - [data/assignment_student_unweighted.csv](data/assignment_student_unweighted.csv)
     - [data/assignment_project_unweighted.csv](data/assignment_project_unweighted.csv)
-- Choix non-pondérés:
+- Unweighted choices:
     - [data/assignment_student_weighted.csv](data/assignment_student_weighted.csv)
     - [data/assignment_project_weighted.csv](data/assignment_project_weighted.csv)
 
-- Visualisation des graphes:
-    - Choix pondérés: [data/exports/weighted_assignment.png](data/exports/weighted_assignment.png)
-    - Choix non-pondérés: [data/exports/unweighted_assignment.png](data/exports/unweighted_assignment.png)
-
+- Graph visualizations:
+    - Weighted choices: [data/exports/weighted_assignment.png](data/exports/weighted_assignment.png)
+    - Unweighted choices: [data/exports/unweighted_assignment.png](data/exports/unweighted_assignment.png)
 
 ![Results1](docs/img/results1.png)
 
@@ -47,78 +46,78 @@ L'objectif est de minimiser le **coût global de satisfaction** selon les choix 
 
 ![data/exports/unweighted_assignment.png](data/exports/unweighted_assignment.png)
 
-
----
-# Fonctionnement
-
-## Algorithme de couplage hongrois (flot à coût minimal) – Explication et exemple 3×3
-
-Ce programme réalise une **affectation optimale** d’étudiants vers des projets en minimisant un **coût global**.  
-Il modélise le problème comme un **flot à coût minimal** sur un graphe orienté.  
-Dans le cas 1–à–1 (chaque projet a une capacité de 1), on retrouve l’algorithme dit “hongrois”.
-
 ---
 
-### 1) Principe général
+# Operation
 
-Deux fichiers d’entrée :
+## Hungarian Matching Algorithm (Minimum-Cost Flow) – Explanation and 3×3 Example
 
-- **projects.csv** : colonnes `id`, `label` (optionnel), `capacity` (défaut 1).  
-- **student-choices.csv** : colonnes `student`, `prefs`, `weight` (défaut 1), `names` (optionnel).
-
-#### Modes de préférences
-
-- **Ordonné** : `prefs` comme `A;B;C`.  
-  Coût par rang : 1er vœu = 0, 2e vœu = 1, 3e vœu = 2, etc.
-- **Pondéré** : `prefs` comme `A:0;B:1.5;C:3`.  
-  Les nombres fournis sont les coûts (plus petit = mieux).  
-
-Tout projet non cité reçoit une **pénalité** (ex. 10) pour éviter les affectations “hors-liste”.  
-Si la capacité totale est insuffisante, un projet virtuel `__NA__` est ajouté pour absorber les non-affectés.
+This program performs an **optimal assignment** of students to projects by minimizing a **global cost**.  
+It models the problem as a **minimum-cost flow** on a directed graph.  
+In the 1-to-1 case (each project has a capacity of 1), this is equivalent to the classic **Hungarian algorithm**.
 
 ---
 
-### 2) Modélisation réseau
+### 1) General principle
 
-On construit un graphe avec :
+Two input files:
 
-- un nœud source `s`,  
-- un nœud étudiant par entrée `e_i`,  
-- un nœud projet par projet `p_j`,  
-- un nœud puits `t`.
+- **projects.csv**: columns `id`, `label` (optional), `capacity` (default 1)  
+- **student-choices.csv**: columns `student`, `prefs`, `weight` (default 1), `names` (optional)
+
+#### Preference modes
+
+- **Ordered**: `prefs` such as `A;B;C`  
+  Cost by rank: 1st choice = 0, 2nd = 1, 3rd = 2, etc.
+- **Weighted**: `prefs` such as `A:0;B:1.5;C:3`  
+  The provided numbers are costs (lower = better).  
+
+Any project not listed receives a **penalty** (e.g., 10) to prevent “off-list” assignments.  
+If the total capacity is insufficient, a virtual project `__NA__` is added to absorb unassigned students.
+
+---
+
+### 2) Network model
+
+The graph is built with:
+
+- a source node `s`  
+- one node per student `e_i`  
+- one node per project `p_j`  
+- a sink node `t`
 
 #### Arcs
 
-- `s -> e_i` : capacité 1, coût 0  
-- `e_i -> p_j` : capacité 1, coût c_ij (dépend des préférences)  
-- `p_j -> t` : capacité = capacité du projet, coût 0  
+- `s -> e_i`: capacity 1, cost 0  
+- `e_i -> p_j`: capacity 1, cost c_ij (depends on preferences)  
+- `p_j -> t`: capacity = project capacity, cost 0  
 
-Objectif : **minimiser** la somme des coûts des arcs utilisés, tout en respectant les capacités.  
-La résolution utilise `networkx.min_cost_flow`.
+Objective: **minimize** the total cost of used arcs while respecting capacities.  
+The solution is obtained using `networkx.min_cost_flow`.
 
-Sorties :
-- par **étudiant** : projet attribué + rang/poids initial ;
-- par **projet** : effectif et liste des étudiants ;
-- **statistiques** : nombre affectés, non-affectés, médiane de rang, taux de 1er vœu, taux top-3.
+Outputs:
+- per **student**: assigned project + initial rank/weight  
+- per **project**: number of assigned students + list of names  
+- **statistics**: number of assignments, unassigned count, median rank, top-1 and top-3 percentages.
 
 ---
 
-### 3) Application numérique détaillée : 3 étudiants × 3 projets
+### 3) Numerical example: 3 students × 3 projects
 
-- Étudiants : `S1`, `S2`, `S3`  
-- Projets : `A`, `B`, `C`  
-- Capacités des projets : `A=1`, `B=1`, `C=1`  
-- Mode **ordonné** (coût par rang : 0, 1, 2)
+- Students: `S1`, `S2`, `S3`  
+- Projects: `A`, `B`, `C`  
+- Project capacities: `A=1`, `B=1`, `C=1`  
+- **Ordered** mode (rank cost: 0, 1, 2)
 
-#### Préférences
+#### Preferences
 
-| Étudiant | 1er vœu | 2e vœu | 3e vœu |
+| Student | 1st choice | 2nd choice | 3rd choice |
 |:--:|:--:|:--:|:--:|
 | S1 | A | B | C |
 | S2 | B | C | A |
 | S3 | B | A | C |
 
-#### Matrice des coûts c_ij (0=meilleur)
+#### Cost matrix c_ij (0=best)
 
 |     | A | B | C |
 |:---:|:---:|:---:|:---:|
@@ -126,7 +125,7 @@ Sorties :
 | S2  | 2 | 0 | 1 |
 | S3  | 1 | 0 | 2 |
 
-#### Graphe d’arcs
+#### Arc graph
 
 - `s -> S1` (cap=1, cost=0), `s -> S2` (cap=1, cost=0), `s -> S3` (cap=1, cost=0)
 - `S1 -> A` (cap=1, cost=0), `S1 -> B` (cap=1, cost=1), `S1 -> C` (cap=1, cost=2)
@@ -134,96 +133,94 @@ Sorties :
 - `S3 -> A` (cap=1, cost=1), `S3 -> B` (cap=1, cost=0), `S3 -> C` (cap=1, cost=2)
 - `A -> t` (cap=1, cost=0), `B -> t` (cap=1, cost=0), `C -> t` (cap=1, cost=0)
 
-Le flot total à envoyer vaut 3 (les 3 étudiants).
+The total flow to send is 3 (the 3 students).
 
 ---
 
-#### Affectations possibles et coût total
+#### Possible assignments and total cost
 
-| Affectation | Coût total |
+| Assignment | Total cost |
 |:--|:--:|
 | (S1→A, S2→B, S3→C) | 0 + 0 + 2 = **2** |
 | (S1→A, S2→C, S3→B) | 0 + 1 + 0 = **1** ✅ |
 | (S1→B, S2→C, S3→A) | 1 + 1 + 1 = **3** |
 | (S1→C, S2→A, S3→B) | 2 + 2 + 0 = **4** |
 
-**Affectation optimale :**
-- `S1 -> A` (rang 1, coût 0)
-- `S2 -> C` (rang 2, coût 1)
-- `S3 -> B` (rang 1, coût 0)
+**Optimal assignment:**
+- `S1 -> A` (rank 1, cost 0)
+- `S2 -> C` (rank 2, cost 1)
+- `S3 -> B` (rank 1, cost 0)
 
-**Coût total minimal** : **1**
-
----
-
-#### Indicateurs de satisfaction
-
-- Étudiants affectés : 3 / 3 = **100 %**  
-- Non-affectés : **0**  
-- Rangs obtenus : (1, 2, 1)  
-- Médiane du rang : **1**  
-- Taux de 1er vœu : 2 / 3 ≈ **66,7 %**  
-- Taux top-3 : **100 %**
+**Minimum total cost**: **1**
 
 ---
 
-### 4) Variante pondérée
+#### Satisfaction indicators
 
-Supposons des coûts explicites (plus petit = mieux) :
+- Assigned students: 3 / 3 = **100 %**  
+- Unassigned: **0**  
+- Obtained ranks: (1, 2, 1)  
+- Median rank: **1**  
+- Top-1 rate: 2 / 3 ≈ **66.7 %**  
+- Top-3 rate: **100 %**
 
-| Étudiant | A | B | C |
+---
+
+### 4) Weighted variant
+
+Assume explicit costs (lower = better):
+
+| Student | A | B | C |
 |:--:|:--:|:--:|:--:|
 | S1 | 0 | 1 | 3 |
 | S2 | 3 | 0 | 1 |
 | S3 | 2 | 0 | 3 |
 
-On utilise ces coûts sur les arcs `e_i -> p_j` (pénalité 10 si un projet n’est pas noté).  
-La solution reste la même, car l’ordre des préférences est identique :
+These costs are used on arcs `e_i -> p_j` (penalty 10 if a project is not rated).  
+The solution remains the same since the preference order is identical:
 
 - `S1 -> A`  
 - `S2 -> C`  
 - `S3 -> B`  
-- Coût total minimal = **1**
+- Minimum total cost = **1**
 
 ---
 
-### 5) Notes pratiques
+### 5) Practical notes
 
-- La **pénalité** (ex. 10) empêche les affectations hors-liste tant qu’une option listée reste disponible.  
-- Le projet virtuel `__NA__` n’apparaît que si la **capacité totale** est inférieure au **nombre d’étudiants**.  
-- Le programme exporte les résultats en CSV, GraphML, GEXF, JSON, et peut aussi générer une **visualisation bipartite** 
-  (étudiants à gauche, projets à droite, épaisseur des arcs proportionnelle au flux).
+- The **penalty** (e.g., 10) prevents off-list assignments as long as a preferred option is available.  
+- The virtual project `__NA__` appears only if the **total capacity** is less than the **number of students**.  
+- The program exports results in CSV, GraphML, GEXF, JSON, and can generate a **bipartite visualization** 
+  (students on the left, projects on the right, edge thickness proportional to the flow).
+
+---
+
+*This Markdown version is compatible with GitLab and Jupyter, without LaTeX.*
 
 ---
 
-*Cette version Markdown est compatible avec GitLab et Jupyter, sans LaTeX.*
+## Weight scale
 
-
----
-## Échelle des pondérations
-
-| Intention | Poids conseillé | Interprétation |
+| Intention | Suggested weight | Interpretation |
 |------------|----------------:|----------------|
-| ❤️ Premier choix | **0.1** | Très fort désir |
-| 💚 Très bon choix | **0.15 – 0.25** | Fort désir |
-| 💛 Bon choix | **0.25 – 0.35** | Préférence positive |
-| 😐 Neutre | **0.5** | Indifférent |
-| 😒 À éviter | **1 – 3** | Préférence négative |
-| 😖 Peu apprécié | **6 – 9** | Très peu souhaité |
-| 💀 Détesté | **10** | Forte pénalité |
+| ❤️ First choice | **0.1** | Very strong desire |
+| 💚 Excellent choice | **0.15 – 0.25** | Strong preference |
+| 💛 Good choice | **0.25 – 0.35** | Positive preference |
+| 😐 Neutral | **0.5** | Indifferent |
+| 😒 To avoid | **1 – 3** | Weak preference |
+| 😖 Disliked | **6 – 9** | Very weak preference |
+| 💀 Hated | **10** | Strong penalty |
 
 ---
 
-## Exécution
+## Execution
 
-
-### Mode notebook
+### Notebook mode
 ```bash
 jupyter notebook src/Assignment-Project_Hungarian-Method.ipynb
 ```
 
 [Assignment-Project_Hungarian-Method.ipynb](src/Assignment-Project_Hungarian-Method.ipynb)
-
 
 ---
 
@@ -235,9 +232,9 @@ pip install -r requirements.txt
 
 ---
 
-## 🧾 Licence
+## 🧾 License
 
-Licence libre **BSD 3-Clause**  
+Open-source license BSD 3-Clause 
 © 2025 — Julien Gimenez  
 
-> ✨ *“L'élégance d'une affectation optimale se mesure à la satisfaction totale.”*
+> *“The elegance of an optimal assignment is measured by total satisfaction.”*
